@@ -1,0 +1,4 @@
+[submodule "contrib/abseil"]
+	path = contrib/abseil
+	url = https://github.com/abseil/abseil-cpp.git
+  shadow = true
