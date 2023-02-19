@@ -7,7 +7,9 @@ cmake-cpp-starter-kit
 ## How To Run
 
 ```shell
+# Fetch submodule
 git submodule update --init --recursive
+
 # Create build directory
 cmake -S . -B build
 # Or build with Ninja (Recommend)
@@ -19,6 +21,9 @@ cmake --build build
 # Run Application
 ./build/main
 
+# Run Test
+cmake --build build --target test
+
 # Format your code
 cmake --build build --target format
 ```
@@ -28,5 +33,5 @@ cmake --build build --target format
 - [x] Generate `compile-commands.json`
 - [x] `abseil` support
 - [x] `clang-format` support
-- [ ] `gtest` support
+- [x] `googletest` support
 
