@@ -1,5 +1,7 @@
 # cmake-cpp-starter-kit
 
+[![CI](https://github.com/ChenKS12138/cmake-cpp-starter-kit/actions/workflows/CI.yml/badge.svg)](https://github.com/ChenKS12138/cmake-cpp-starter-kit/actions/workflows/CI.yml)
+
 cmake-cpp-starter-kit
 
 ## How To Run
