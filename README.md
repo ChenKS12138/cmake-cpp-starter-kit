@@ -4,6 +4,12 @@
 
 cmake-cpp-starter-kit
 
+## Requirement
+
+> cmake >= 3.11  
+gcc >= 7 or clang >= 5 (To Support c++17)  
+(Optional) Ninja >= 1.10.0 (For faster build)
+
 ## How To Run
 
 ```shell
@@ -34,4 +40,3 @@ cmake --build build --target format
 - [x] `abseil` support
 - [x] `clang-format` support
 - [x] `googletest` support
-
