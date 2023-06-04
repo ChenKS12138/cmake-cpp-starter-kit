@@ -17,20 +17,13 @@ jobs:
       - name: Setup cmake
         uses: jwlawson/actions-setup-cmake@v1.13
         with:
-          cmake-version: '3.22.1'
-
-      - name: Setup Ninja
-        uses: ashutoshvarma/setup-ninja@master
-        with:
-          # ninja version to download. Default: 1.10.0
-          version: 1.10.0
+          cmake-version: "3.22.1"
 
       - name: Configure CMake
-        run: cmake -S . -B build -GNinja
+        run: cmake -S . -B build
 
       - name: Build
         run: cmake --build build
 
       - name: Testing
         run: cmake --build build --target test
-
