@@ -1,9 +1,0 @@
-[submodule "contrib/abseil"]
-  path = contrib/abseil
-  url = https://github.com/abseil/abseil-cpp.git
-  shadow = true
-[submodule "contrib/googletest"]
-  path = contrib/googletest
-  url = https://github.com/google/googletest.git
-  shadow = true
-

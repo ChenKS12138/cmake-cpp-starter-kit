@@ -7,10 +7,25 @@ option(
   ON
 )
 
-#abseil
+# setup cpm
+set(CPM_DOWNLOAD_LOCATION ${CMAKE_BINARY_DIR}/CPM.cmake)
+file(DOWNLOAD
+        https://github.com/cpm-cmake/CPM.cmake/releases/latest/download/cpm.cmake
+        ${CPM_DOWNLOAD_LOCATION})
+include(${CPM_DOWNLOAD_LOCATION})
+
+# abseil
 set(ABSL_PROPAGATE_CXX_STD ON)
-add_subdirectory(contrib/abseil)
-include_directories(${CMAKE_SOURCE_DIR}/contrib/abseil)
+CPMAddPackage(
+  NAME absl
+  GITHUB_REPOSITORY "abseil/abseil-cpp"
+  GIT_TAG "20230125.3"
+)
+if (absl_ADDED)
+  include_directories(${absl_SOURCE_DIR})
+else()
+  message(FATAL_ERROR "absl not added")
+endif()
 
 project(
   cmake-cpp-starter-kit
@@ -89,7 +104,6 @@ add_custom_target(
 
 if (build_testing) 
   # test
-  add_subdirectory(${CMAKE_SOURCE_DIR}/contrib/googletest)
   add_subdirectory(test)
 endif()
 
