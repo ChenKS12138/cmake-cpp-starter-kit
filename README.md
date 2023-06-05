@@ -7,19 +7,16 @@ cmake-cpp-starter-kit
 ## Requirement
 
 > cmake >= 3.11  
-gcc >= 7 or clang >= 5 (To Support c++17)  
-(Optional) Ninja >= 1.10.0 (For faster build)
+> gcc >= 7 or clang >= 5 (To Support c++17)  
+> (Optional) Ninja >= 1.10.0 (For faster build)
 
 ## How To Run
 
 ```shell
-# Fetch submodule
-git submodule update --init --recursive
-
 # Create build directory
 cmake -S . -B build
 # Or build with Ninja (Recommend)
-# cmake -S . -B buld -GNinja 
+# cmake -S . -B buld -GNinja
 
 # Run build
 cmake --build build
