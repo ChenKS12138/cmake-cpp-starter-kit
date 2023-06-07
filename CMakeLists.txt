@@ -1,4 +1,10 @@
-cmake_minimum_required(VERSION 3.11 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.26 FATAL_ERROR)
+
+project(
+  cmake-cpp-starter-kit
+  LANGUAGES CXX
+  VERSION 1.0
+)
 
 # Project Options
 option(
@@ -6,6 +12,10 @@ option(
   "build testing"
   ON
 )
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # setup cpm
 set(CPM_DOWNLOAD_LOCATION ${CMAKE_BINARY_DIR}/CPM.cmake)
@@ -21,24 +31,13 @@ CPMAddPackage(
   GITHUB_REPOSITORY "abseil/abseil-cpp"
   GIT_TAG "20230125.3"
 )
-if (absl_ADDED)
-  include_directories(${absl_SOURCE_DIR})
-else()
-  message(FATAL_ERROR "absl not added")
-endif()
 
-project(
-  cmake-cpp-starter-kit
-  LANGUAGES CXX
-  VERSION 1.0
-)
+# proto
+# add_subdirectory(proto)
+# include_directories(${CMAKE_BINARY_DIR}/proto)
 
 set(BIN_NAME main)
 set(LIB_NAME lib${PROJECT_NAME})
-
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
@@ -58,10 +57,13 @@ target_link_libraries(
   ${LIB_NAME}
 
   #abseil
-  absl_base
-  absl_strings
-  absl_log
-  absl_log_initialize
+  absl::base
+  absl::strings
+  absl::log
+  absl::log_initialize
+
+  #proto
+  serviceproto
 )
 
 # project executable binary

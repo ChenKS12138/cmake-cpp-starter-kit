@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package photosyncservice;
+
+service PhotoSyncService {
+    rpc FindPartitionInfo(FindPartitionInfoRequest)
+        returns (FindPartitionInfoResponse) {}
+}
+
+message FindPartitionInfoRequest {}
+
+message FindPartitionInfoResponse {
+    message Partition {
+        enum PARTITION_STATE {
+            UNDEFINED = 0;
+            FREE = 1;
+            BUSY = 2;
+        }
+        optional string name = 1;
+        optional uint64 used_bytes_count = 2;
+        optional uint64 total_bytes_count = 3;
+        optional PARTITION_STATE state = 4;
+    }
+    optional string error_message = 1;
+    repeated Partition partition = 2;
+    optional uint64 total_count = 3;
+}
